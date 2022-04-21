@@ -1,0 +1,2 @@
+# NumMethodsLab2
+ඞඞඞ
