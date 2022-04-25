@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import static MatrixGauss.MatrixGauss.*;
 
-public class MPOperations {
+class MPOperations {
     static void addMPToList() {
         MList.add(M);
         PList.add(P);

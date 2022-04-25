@@ -1,6 +1,6 @@
 package MatrixGauss;
 
-public class Multiplication {
+class Multiplication {
     /**
      * Множення матриці на матрицю
      */
