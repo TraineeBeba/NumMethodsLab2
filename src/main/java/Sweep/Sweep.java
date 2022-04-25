@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static Sweep.Printer.printLemmaCheck;
+import static Sweep.Printer.printResult;
 import static java.lang.Math.abs;
 
 public class Sweep {
@@ -27,38 +29,37 @@ public class Sweep {
             c.add(-arr[i][i]);                              // Все що на діагоналі - с і-ті
             if (i != arr.length - 1) b.add(arr[i][i + 1]);  // Все що вище діагоналі - а і-ті
         }
-//        if (!lemaСheck()){
-//            System.out.println("Oops!");
-//            System.exit(0);
-//        }
         findSweepCoefs();
         findResults();
-        printResult();
+        printResult(x);
+        printLemmaCheck();
     }
-// !!!!!!!!!!!!!!!!!ЛЕМА НА ВИКОНУЄТЬСЯ, ТРЕБА ЗАПИТАТИ!!!!!!!!!!!!!!!!!!!
-//    /**
-//     * Лема 3.1
-//     * Лема за якою визначаємо стійкість методу для а, с, в - і-тих
-//     */
-//    private static boolean lemaСheck(){
-//        for (int i = 0; i < arr.length - 1; i++) {
-//            if (a.get(i) == 0 || b.get(i) == 0)              // Частина умови леми
-//                return false;
-//        }
-//        if (c.get(arr.length - 1) == 0 || c.get(0) == 0)     // Ще частина умови леми
-//            return false;
-//        a.add(0,0);                            // Теж частина умови леми
-//        b.add(arr.length - 1, 0);
-//
-//        for (int i = 0; i < arr.length; i++) {               // Основна первірка умови
-//            if (abs(c.get(i)) < abs(a.get(i)) + abs(b.get(i)))
-//                return false;
-//        }
-//
-//        a.remove(0);                                   // Видаляємо, бо для роботи алгоритму 0-ві
-//        b.remove(arr.length - 1);                      // коефіцієнти не потрібні
-//        return true;
-//    }
+
+
+
+    /**
+     * Лема 3.1
+     * Лема за якою визначаємо стійкість методу для а, с, в - і-тих
+     */
+    static boolean lemmaCheck(){
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (a.get(i) == 0 || b.get(i) == 0)              // Частина умови леми
+                return false;
+        }
+        if (c.get(arr.length - 1) == 0 || c.get(0) == 0)     // Ще частина умови леми
+            return false;
+        a.add(0,0);                            // Теж частина умови леми
+        b.add(arr.length - 1, 0);
+
+        for (int i = 0; i < arr.length; i++) {               // Основна первірка умови
+            if (abs(c.get(i)) < abs(a.get(i)) + abs(b.get(i)))
+                return false;
+        }
+
+        a.remove(0);                                   // Видаляємо, бо для роботи алгоритму 0-ві
+        b.remove(arr.length - 1);                      // коефіцієнти не потрібні
+        return true;
+    }
 
     /**
      * 1 пукнт алгоритму
@@ -87,16 +88,6 @@ public class Sweep {
                 (c.get(2) - alpha.get(1)*a.get(1));
         for (int i = arr.length-2; i > -1; i--) {            // 3 пункт
             x[i] = alpha.get(i) * x[i+1] + beta.get(i);
-        }
-    }
-
-    /**
-     * Певен що цій функції треба приділити побільше уваги,
-     * адже не зовсім очевидно яким чином і що вона робить...
-     */
-    private static void printResult(){
-        for (int i = 0; i < x.length; i++) {
-            System.out.printf("x%d: %.1f%n", i, x[i]);
         }
     }
 }
