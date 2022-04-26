@@ -14,9 +14,9 @@ public class Main {
             Let's try this one:""";
     public static void main(String[] args) {
         System.out.print(METHOD_CHOICE);
+        System.out.println("_____________________________");
         Scanner input = new Scanner(System.in);
         int choice = input.nextInt();
-        System.out.println("_____________________________");
 
         switch (choice) {
             case (1) -> MatrixGauss.runMethod();
