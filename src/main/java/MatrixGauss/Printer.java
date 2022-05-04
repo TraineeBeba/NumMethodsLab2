@@ -49,11 +49,11 @@ class Printer {
         System.out.println("______________________________");
 
         for (int i = 0; i < x.length; i++) {
-            System.out.printf("x%d: %.1f\n",i, x[i]);
+            System.out.printf("x%d: %6.3f\n",i, x[i]);
         }
         System.out.println("______________________________");
 
         System.out.println("Inversed matrix is:");
-        printMatrix(mtr);
+        printMatrix(invMtr);
     }
 }
